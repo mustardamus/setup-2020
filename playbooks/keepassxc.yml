@@ -1,0 +1,28 @@
+# run with `ansible-playbook keepassxc.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Remove old version
+      file:
+        path: ~/Apps/KeePassXC.appimage
+        state: absent
+
+    - name: Make sure Apps directory exists
+      file:
+        path: ~/Apps
+        state: directory
+
+    - name: Download AppImage and make it executable
+      get_url:
+        url: https://github.com/keepassxreboot/keepassxc/releases/download/2.5.2/KeePassXC-2.5.2-x86_64.AppImage
+        dest: ~/Apps/KeePassXC.AppImage
+        mode: 0755
+
+    - name: Symlink keepassxc bin
+      become: true
+      file:
+        src: /home/mustardamus/Apps/KeePassXC.AppImage
+        dest: /usr/bin/keepassxc
+        state: link

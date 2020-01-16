@@ -1,0 +1,57 @@
+# run with `ansible-playbook theme.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Clone latest Teja theme
+      git:
+        repo: https://www.opencode.net/ju1464/Teja.git
+        dest: ~/Downloads/teja-theme
+
+    - name: Create ~/.themes
+      file:
+        path: ~/.themes
+        state: directory
+
+    - name: Remove old Teja theme
+      file:
+        path: ~/.themes/Teja_Darkest
+        state: absent
+
+    - name: Copy Teja_Darkest to ~/.themes
+      shell: cp -r ~/Downloads/teja-theme/Teja_Darkest ~/.themes/Teja_Darkest
+
+    - name: Remove Teja repo
+      file:
+        path: ~/Downloads/teja-theme
+        state: absent
+
+    - name: Clone latest Pop icons
+      git:
+        repo: https://github.com/pop-os/icon-theme
+        dest: ~/Downloads/pop-icons
+
+    - name: Install build tools
+      apt:
+        name: [meson, ninja-build, build-essential]
+        state: present
+
+    - name: Build icons
+      shell: meson build
+      args:
+        chdir: ~/Downloads/pop-icons
+
+    - name: Install icons
+      shell: ninja -C build install
+      args:
+        chdir: /home/mustardamus/Downloads/pop-icons
+      become: true
+
+    - name: Remove Pop icons repo
+      file:
+        path: ~/Downloads/pop-icons
+        state: absent
+
+    - name: Load dconf settings
+      shell: dconf load / < ../templates/dconf.ini

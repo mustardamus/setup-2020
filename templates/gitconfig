@@ -1,0 +1,7 @@
+[user]
+	name = Sebastian Senf
+	email = contact@mustardamus.com
+[core]
+	editor = vim
+[credential]
+	helper = store

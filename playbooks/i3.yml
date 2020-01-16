@@ -1,0 +1,10 @@
+# run with `sudo ansible-playbook i3.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Install i3 and dependencies
+      apt:
+        name: [i3, bc, alsa-utils, pulseaudio, rxvt-unicode]
+        state: present

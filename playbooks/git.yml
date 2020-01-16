@@ -1,0 +1,16 @@
+# run with `ansible-playbook git.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Install git
+      apt:
+        name: git
+        state: present
+      become: true
+
+    - name: Copy .gitconfig
+      copy:
+        src: ../templates/gitconfig
+        dest: ~/.gitconfig

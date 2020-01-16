@@ -1,0 +1,41 @@
+# run with `ansible-playbook import-privates.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Remove old .ssh folder
+      file:
+        path: ~/.ssh
+        state: absent
+
+    - name: Copy .ssh folder from private
+      shell: cp -rf ../../private/.ssh ~/.ssh
+
+    - name: Set read-only permission to SSH Private Key
+      file:
+        path: ~/.ssh/id_rsa
+        mode: 0400
+
+    - name: Set read-only permission to SSH Public Key
+      file:
+        path: ~/.ssh/id_rsa.pub
+        mode: 0400
+
+    - name: Remove old .gnupg folder
+      file:
+        path: ~/.gnupg
+        state: absent
+
+    - name: Copy .gnupg folder from private
+      shell: cp -rf ../../private/.gnupg ~/.gnupg
+
+    - name: Copy client.ovpn VPN config
+      copy:
+        src: ../../private/client.ovpn
+        dest: ~/Documents/client.ovpn
+
+    - name: Copy KeePassXC default database file
+      copy:
+        src: ../../private/mustardamus.kdbx
+        dest: ~/Documents/mustardamus.kdbx

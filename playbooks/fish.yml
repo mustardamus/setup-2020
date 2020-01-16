@@ -1,0 +1,42 @@
+# run with `sudo ansible-playbook fish.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Install wget
+      apt:
+        name: wget
+        state: present
+
+    - name: Copy Fish apt .list
+      template:
+        src: ../templates/fish.list
+        dest: /etc/apt/sources.list.d/fish.list
+
+    - name: Import Fish key
+      shell: wget -qO - https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key | apt-key add -
+
+    - name: Update apt sources
+      apt:
+        update_cache: yes
+
+    - name: Install fish
+      apt:
+        name: fish
+        state: present
+
+    - name: Make Fish the default shell
+      shell: usermod -s /usr/bin/fish mustardamus
+
+    - name: Remove default Fish settings
+      file:
+        path: ~/.config/fish
+        state: absent
+      become: true
+      become_user: mustardamus
+
+    - name: Copy Fish settings
+      shell: cp -r ../templates/fish ~/.config/fish
+      become: true
+      become_user: mustardamus

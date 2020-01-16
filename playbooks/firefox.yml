@@ -1,0 +1,43 @@
+# run with `ansible-playbook firefox.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Remove firefox-esr
+      become: true
+      apt:
+        name: firefox-esr
+        state: absent
+
+    - name: Remove old version
+      file:
+        path: ~/Apps/firefox
+        state: absent
+
+    - name: Download latest Firefox archive
+      get_url:
+        url: https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US
+        dest: ~/Downloads/firefox.tar.bz2
+
+    - name: Make sure Apps directory exists
+      file:
+        path: ~/Apps
+        state: directory
+
+    - name: Unpack archive
+      unarchive:
+        src: ~/Downloads/firefox.tar.bz2
+        dest: ~/Apps
+
+    - name: Remove archive
+      file:
+        path: ~/Downloads/firefox.tar.bz2
+        state: absent
+
+    - name: Symlink firefox bin
+      become: true
+      file:
+        src: /home/mustardamus/Apps/firefox/firefox
+        dest: /usr/bin/firefox
+        state: link

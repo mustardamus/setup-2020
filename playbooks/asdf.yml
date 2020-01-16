@@ -1,0 +1,45 @@
+# run with `ansible-playbook asdf.yml`
+
+---
+- hosts: localhost
+  connection: local
+
+  vars:
+    asdf_install:
+      - { name: 'nodejs', version: '12.14.1' }
+
+  tasks:
+    - name: Clone latest asdf repo
+      git:
+        repo: https://github.com/asdf-vm/asdf.git
+        dest: ~/.asdf
+        update: yes
+
+    - name: Source asdf in .bash_profile
+      lineinfile:
+        dest: ~/.bash_profile
+        create: true
+        line: source ~/.asdf/asdf.sh
+
+    - name: Source asdf in config.fish
+      lineinfile:
+        dest: ~/.config/fish/config.fish
+        create: true
+        line: source ~/.asdf/asdf.fish
+
+    - name: Add asdf plugins
+      shell: "bash -lc 'asdf plugin-add {{item.name}}'"
+      with_items: "{{asdf_install}}"
+      args:
+        creates: "~/.asdf/plugins/{{ item.name }}"
+
+    - name: Add Node.js PGP keys
+      command: "bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+
+    - name: Install languages with asdf
+      command: "bash -lc 'asdf install {{item.name}} {{item.version}}'"
+      with_items: "{{asdf_install}}"
+
+    - name: Set languages as global with asdf
+      command: "bash -lc 'asdf global {{item.name}} {{item.version}}'"
+      with_items: "{{asdf_install}}"
