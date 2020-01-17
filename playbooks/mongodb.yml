@@ -1,0 +1,43 @@
+# run with `sudo ansible-playbook mongodb.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create apt source mongodb.list
+      lineinfile:
+        dest: /etc/apt/sources.list.d/mongodb.list
+        create: true
+        line: deb http://repo.mongodb.org/apt/debian buster/mongodb-org/4.2 main
+
+    - name: Add MongoDB apt key
+      apt_key:
+        url: https://www.mongodb.org/static/pgp/server-4.2.asc
+        state: present
+
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install MongoDB
+      apt:
+        name: mongodb-org
+        state: present
+
+    - name: Create ~/MongoDB-Data
+      file:
+        path: ~/MongoDB-Data
+        state: directory
+      become: true
+      become_user: mustardamus
+
+    - name: Create /data
+      file:
+        path: /data
+        state: directory
+
+    - name: Symlink /data/db to ~/MongoDB-Data
+      file:
+        src: /home/mustardamus/MongoDB-Data
+        dest: /data/db
+        state: link

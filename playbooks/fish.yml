@@ -4,18 +4,16 @@
 - hosts: localhost
   connection: local
   tasks:
-    - name: Install wget
-      apt:
-        name: wget
-        state: present
-
-    - name: Copy Fish apt .list
-      template:
-        src: ../templates/fish.list
+    - name: Create apt source fish.list
+      lineinfile:
         dest: /etc/apt/sources.list.d/fish.list
+        create: true
+        line: deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_10/ /
 
-    - name: Import Fish key
-      shell: wget -qO - https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key | apt-key add -
+    - name: Add Fish apt key
+      apt_key:
+        url: https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key
+        state: present
 
     - name: Update apt sources
       apt:
