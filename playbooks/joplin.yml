@@ -1,0 +1,28 @@
+# run with `ansible-playbook joplin.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Remove old version
+      file:
+        path: ~/Apps/Joplin.AppImage
+        state: absent
+
+    - name: Make sure Apps directory exists
+      file:
+        path: ~/Apps
+        state: directory
+
+    - name: Download AppImage and make it executable
+      get_url:
+        url: https://github.com/laurent22/joplin/releases/download/v1.0.175/Joplin-1.0.175-x86_64.AppImage
+        dest: ~/Apps/Joplin.AppImage
+        mode: 0755
+
+    - name: Symlink joplin bin
+      become: true
+      file:
+        src: /home/mustardamus/Apps/Joplin.AppImage
+        dest: /usr/bin/joplin
+        state: link

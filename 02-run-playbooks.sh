@@ -10,3 +10,4 @@ ansible-playbook playbooks/keepassxc.yml
 sudo ansible-playbook playbooks/mongodb.yml
 ansible-playbook playbooks/robo3t.yml
 ansible-playbook playbooks/visual-studio-code.yml
+ansible-playbook playbooks/joplin.yml

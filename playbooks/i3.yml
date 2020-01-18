@@ -6,5 +6,8 @@
   tasks:
     - name: Install i3 and dependencies
       apt:
-        name: [i3, bc, alsa-utils, pulseaudio, rxvt-unicode]
+        name: [
+          i3, i3blocks, bc, alsa-utils, pulseaudio, rxvt-unicode,
+          brightnessctl
+        ]
         state: present
