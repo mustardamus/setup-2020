@@ -28,3 +28,8 @@
         src: /home/mustardamus/Apps/robo3t/bin/robo3t
         dest: /usr/bin/robo3t
         state: link
+
+    - name: Remove archive
+      file:
+        path: ~/Downloads/robo3t.tar.bz2
+        state: absent

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=TOR Browser
+GenericName=Tor Browser
+Exec=/home/mustardamus/Apps/tor-browser_en-US/Browser/start-tor-browser
+Path=/home/mustardamus/Apps/tor-browser_en-US/Browser/
+Terminal=false
+Icon=/home/mustardamus/Apps/tor-browser_en-US/Browser/browser/chrome/icons/default/default128.png
+Type=Application
+Categories=Application;Network;WebBrowser;

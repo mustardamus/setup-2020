@@ -19,5 +19,14 @@
         state: present
         name: [
           build-essential, openvpn, ffmpeg, adb, unrar, htop, vlc, transmission,
-          nvidia-driver, ffmpeg, intel-microcode, curl, net-tools
+          nvidia-driver, ffmpeg, intel-microcode, curl, net-tools, deja-dup,
+          chromium, vim
         ]
+
+    - name: Install VirtualBox
+      apt:
+        deb: https://download.virtualbox.org/virtualbox/6.0.14/virtualbox-6.0_6.0.14-133895~Debian~buster_amd64.deb
+
+    - name: Install Vagrant
+      apt:
+        deb: https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.deb

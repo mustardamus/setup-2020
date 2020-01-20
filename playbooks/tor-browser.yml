@@ -1,0 +1,30 @@
+# run with `ansible-playbook tor-browser.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Remove old TOR Browser version
+      file:
+        path: ~/Apps/tor-browser_en-US
+        state: absent
+
+    - name: Download TOR Browser
+      get_url:
+        url: https://www.torproject.org/dist/torbrowser/9.0.4/tor-browser-linux64-9.0.4_en-US.tar.xz
+        dest: ~/Downloads/tor-browser.tar.bz2
+
+    - name: Extract TOR Browser
+      unarchive:
+        src: ~/Downloads/tor-browser.tar.bz2
+        dest: ~/Apps
+
+    - name: Create TOR Browser .desktop Launcher
+      copy:
+        src: ../templates/TOR-Browser.desktop
+        dest: ~/.local/share/applications
+
+    - name: Remove archive
+      file:
+        path: ~/Downloads/tor-browser.tar.bz2
+        state: absent
