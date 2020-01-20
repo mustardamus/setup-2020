@@ -11,3 +11,4 @@ sudo ansible-playbook playbooks/mongodb.yml
 ansible-playbook playbooks/robo3t.yml
 ansible-playbook playbooks/visual-studio-code.yml
 ansible-playbook playbooks/joplin.yml
+sudo ansible-playbook playbooks/auto-login.yml

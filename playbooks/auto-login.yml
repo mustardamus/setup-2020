@@ -1,0 +1,11 @@
+# run with `sudo ansible-playbook auto-login.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Add user for autostart to lightdm
+      lineinfile:
+        path: /etc/lightdm/lightdm.conf
+        regexp: '^#autologin-user='
+        line: autologin-user=mustardamus
