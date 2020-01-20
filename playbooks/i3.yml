@@ -8,6 +8,21 @@
       apt:
         name: [
           i3, i3blocks, bc, alsa-utils, pulseaudio, rxvt-unicode,
-          brightnessctl
+          brightnessctl, rofi
         ]
         state: present
+
+    - name: Copy i3 config and scripts
+      copy:
+        src: ../templates/i3
+        dest: ~/.config
+      become: true
+      become_user: mustardamus
+
+    - name: Copy Xorg configs
+      copy:
+        src: "../templates/{{item}}"
+        dest: "~/.config/.{{item}}"
+      with_items: [xinitrc, Xresources]
+      become: true
+      become_user: mustardamus

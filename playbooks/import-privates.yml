@@ -10,7 +10,9 @@
         state: absent
 
     - name: Copy .ssh folder from private
-      shell: cp -rf ../../private/.ssh ~/.ssh
+      copy:
+        src: ../../private/.ssh
+        dest: ~/.ssh
 
     - name: Set read-only permission to SSH Private Key
       file:
@@ -28,7 +30,9 @@
         state: absent
 
     - name: Copy .gnupg folder from private
-      shell: cp -rf ../../private/.gnupg ~/.gnupg
+      copy:
+        src: ../../private/.gnupg
+        dest: ~/.gnupg
 
     - name: Copy client.ovpn VPN config
       copy:

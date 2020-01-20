@@ -1,0 +1,30 @@
+# run with `ansible-playbook export-configs.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Copy i3 config and scripts
+      copy:
+        src: ~/.config/i3
+        dest: ../templates
+
+    - name: Copy Xorg configs
+      copy:
+        src: "~/.{{item}}"
+        dest: "../templates/{{item}}"
+      with_items: [xinitrc, Xresources]
+
+    - name: Copy fish config
+      copy:
+        src: ~/.config/fish
+        dest: ../templates
+
+    - name: Copy VS Code configs
+      copy:
+        src: "~/.config/Code/User/{{item}}"
+        dest: "../templates/visual-studio-code/{{item}}"
+      with_items: [settings.json, keybindings.json]
+
+    - name: Export dconf settings
+      shell: dconf dump / > ../templates/dconf.ini
