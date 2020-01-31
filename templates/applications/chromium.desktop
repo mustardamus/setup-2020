@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Chromium
+GenericName=WebmBrowser
+Exec=/usr/bin/chromium %U
+Terminal=false
+Type=Application
+Icon=chromium
+MimeType=text/html;text/xml;application/xhtml_xml;application/x-mimearchive;x-scheme-handler/http;x-scheme-handler/https;

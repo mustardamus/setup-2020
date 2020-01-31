@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=Deja-Dup
+GenericName=Backup Tool
+Icon=org.gnome.DejaDup
+Exec=deja-dup
+DBusActivatable=true
+Type=Application
+Terminal=false

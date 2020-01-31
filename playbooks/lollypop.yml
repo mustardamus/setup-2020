@@ -1,0 +1,25 @@
+# run with `sudo ansible-playbook lollypop.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Create apt source lollypop.list
+      lineinfile:
+        dest: /etc/apt/sources.list.d/lollypop.list
+        create: true
+        line: deb http://ppa.launchpad.net/gnumdk/lollypop/ubuntu bionic main
+
+    - name: Add Lollypop apt key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: 8FAD14A04A8E87F23FB5653BDBA501177AA84500
+
+    - name: Update apt sources
+      apt:
+        update_cache: yes
+
+    - name: Install Lollypop
+      apt:
+        name: lollypop
+        state: present

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=VLC
+GenericName=Media Player
+Exec=/usr/bin/vlc --started-from-file %U
+TryExec=/usr/bin/vlc
+Terminal=false
+Icon=vlc
+Type=Application

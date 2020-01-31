@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Transmission
+GenericName=BitTorrent Client
+Exec=transmission-gtk %U
+Icon=transmission
+Terminal=false
+TryExec=transmission-gtk
+Type=Application
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
