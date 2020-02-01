@@ -12,3 +12,4 @@ ansible-playbook playbooks/robo3t.yml
 ansible-playbook playbooks/visual-studio-code.yml
 ansible-playbook playbooks/joplin.yml
 sudo ansible-playbook playbooks/auto-login.yml
+sudo ansible-playbook playbooks/lollypop.yml

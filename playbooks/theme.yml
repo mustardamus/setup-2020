@@ -22,7 +22,7 @@
     - name: Copy Teja_Darkest to ~/.themes
       copy:
         src: ~/Downloads/teja-theme/Teja_Darkest
-        dest: ~/.themes/Teja_Darkest
+        dest: ~/.themes/
 
     - name: Remove Teja repo
       file:
@@ -38,6 +38,7 @@
       apt:
         name: [meson, ninja-build, build-essential]
         state: present
+      become: true
 
     - name: Build icons
       shell: meson build
@@ -60,5 +61,20 @@
 
     - name: Copy fonts
       copy:
-        src: ../templates/fonts
-        dest: ~/.fonts
+        src: ../templates/.fonts
+        dest: ~/
+
+    - name: Copy i3 config and scripts
+      copy:
+        src: ../templates/i3
+        dest: ~/.config
+
+    - name: Copy .xinitrc
+      copy:
+        src: ../templates/xinitrc
+        dest: ~/.xinitrc
+
+    - name: Copy .Xresources
+      copy:
+        src: ../templates/Xresources
+        dest: ~/.Xresources

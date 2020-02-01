@@ -37,6 +37,6 @@
     - name: Copy Fish settings
       copy:
         src: ../templates/fish
-        dest: ~/.config/fish
+        dest: ~/.config
       become: true
       become_user: mustardamus
