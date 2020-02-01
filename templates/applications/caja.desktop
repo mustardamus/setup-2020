@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Caja
+GenericName=File Manager
+Exec=caja
+Icon=caja
+Terminal=false
+Type=Application
+StartupNotify=false

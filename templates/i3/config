@@ -77,14 +77,17 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 # web
 set $ws1 "1:"
-# dev
+# code
 set $ws2 "2:"
+# terminals
 set $ws3 "3:"
 set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
+# music
+set $ws7 "7:"
+# download
+set $ws8 "8:"
 # passwords
 set $ws9 "9:"
 # wiki
@@ -199,7 +202,7 @@ client.background       #000000
 
 for_window [class="KeePassXC"] move container to workspace $ws9
 for_window [class="Joplin"] move container to workspace $ws10
-for_window [class="Visual Studio Code"] move container to workspace $ws2
+for_window [class="Transmission"] move container to workspace $ws8
 
 # Will handle hdpi, use mate-appearance-properties to change the theme etc
 # The `sleep 1` hack in the exec's below is to wait for the appearance daemon to be started

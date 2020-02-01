@@ -1,0 +1,20 @@
+# run with `ansible-playbook desktop-launchers.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Backup all system .desktop launchers
+      shell: "mv {{item}} {{item}}.bak"
+      with_fileglob: "/usr/share/applications/*.desktop"
+      become: true
+
+    - name: Remove old user .desktop launchers
+      file:
+        path: ~/.local/share/applications
+        state: absent
+
+    - name: Copy .desktop launchers
+      copy:
+        src: ../templates/applications
+        dest: ~/.local/share

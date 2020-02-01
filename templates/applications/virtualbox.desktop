@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=VirtualBox
+GenericName=Virtual Machine
+Type=Application
+Exec=VirtualBox %U
+TryExec=VirtualBox
+Icon=virtualbox
+Terminal=false

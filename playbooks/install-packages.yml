@@ -20,7 +20,7 @@
         name: [
           build-essential, openvpn, ffmpeg, adb, unrar, htop, vlc, transmission,
           nvidia-driver, ffmpeg, intel-microcode, curl, net-tools, deja-dup,
-          chromium, vim
+          chromium, vim, shotwell, picard
         ]
 
     - name: Install VirtualBox
@@ -30,3 +30,7 @@
     - name: Install Vagrant
       apt:
         deb: https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.deb
+
+    - name: Install VeraCrypt
+      apt:
+        deb: https://launchpad.net/veracrypt/trunk/1.24-update4/+download/veracrypt-1.24-Update4-Debian-10-amd64.deb

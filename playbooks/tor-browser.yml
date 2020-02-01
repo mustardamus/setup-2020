@@ -19,11 +19,6 @@
         src: ~/Downloads/tor-browser.tar.bz2
         dest: ~/Apps
 
-    - name: Create TOR Browser .desktop Launcher
-      copy:
-        src: ../templates/TOR-Browser.desktop
-        dest: ~/.local/share/applications
-
     - name: Remove archive
       file:
         path: ~/Downloads/tor-browser.tar.bz2
