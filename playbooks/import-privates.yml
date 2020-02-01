@@ -12,7 +12,7 @@
     - name: Copy .ssh folder from private
       copy:
         src: ../../private/.ssh
-        dest: ~/.ssh
+        dest: ~/
 
     - name: Set read-only permission to SSH Private Key
       file:
@@ -32,7 +32,7 @@
     - name: Copy .gnupg folder from private
       copy:
         src: ../../private/.gnupg
-        dest: ~/.gnupg
+        dest: ~/
 
     - name: Copy client.ovpn VPN config
       copy:
