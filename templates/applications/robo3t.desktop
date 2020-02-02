@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Robo3t
+GenericName=MongoDB UI
+Exec=robo3t
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/usr/share/icons/Pop/128x128@2x/apps/remote-desktop.png

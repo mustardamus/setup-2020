@@ -1,0 +1,12 @@
+# run with `sudo ansible-playbook remove-packages.yml`
+
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Remove packages
+      apt:
+        state: absent
+        name: [
+          caja
+        ]

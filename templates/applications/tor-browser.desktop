@@ -1,10 +1,11 @@
 [Desktop Entry]
-Encoding=UTF-8
 Version=1.0
-Name=TOR Browser
-GenericName=Onion Browser
+Name=TOR
+GenericName=Web Browser
 Exec=/home/mustardamus/Apps/tor-browser_en-US/Browser/start-tor-browser
-Path=/home/mustardamus/Apps/tor-browser_en-US/Browser/
 Terminal=false
-Icon=/home/mustardamus/Apps/tor-browser_en-US/Browser/browser/chrome/icons/default/default128.png
+X-MultipleArgs=false
 Type=Application
+Icon=/home/mustardamus/Apps/tor-browser_en-US/Browser/browser/chrome/icons/default/default128.png
+Categories=Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml_xml;application/x-mimearchive;x-scheme-handler/http;x-scheme-handler/https;
