@@ -20,7 +20,7 @@
         name: [
           build-essential, openvpn, ffmpeg, adb, unrar, htop, vlc, transmission,
           nvidia-driver, ffmpeg, intel-microcode, curl, net-tools, deja-dup,
-          chromium, vim, shotwell, thunar
+          chromium, vim, shotwell, thunar, feh, gnome-disk-utility
         ]
 
     - name: Install VirtualBox
