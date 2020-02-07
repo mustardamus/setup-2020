@@ -9,3 +9,9 @@
         path: /etc/lightdm/lightdm.conf
         regexp: '^#autologin-user='
         line: autologin-user=mustardamus
+
+    - name: Start i3 by default
+      lineinfile:
+        path: /etc/lightdm/lightdm.conf
+        regexp: '^#autologin-session='
+        line: autologin-session=i3
