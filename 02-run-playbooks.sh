@@ -15,4 +15,3 @@ ansible-playbook playbooks/joplin.yml
 ansible-playbook playbooks/tor-browser.yml
 sudo ansible-playbook playbooks/auto-login.yml
 sudo ansible-playbook playbooks/lollypop.yml
-ansible-playbook playbooks/desktop-launchers.yml

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=Joplin
-GenericName=Notes and Todos
-Exec=joplin
-Terminal=false
-X-MultipleArgs=false
-Type=Application
-Icon=/usr/share/icons/Pop/128x128@2x/apps/accessories-text-editor.png

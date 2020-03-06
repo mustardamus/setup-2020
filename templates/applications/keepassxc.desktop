@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=KeePassXC
-GenericName=Password Manager
-Exec=keepassxc
-Terminal=false
-X-MultipleArgs=false
-Type=Application
-Icon=/usr/share/icons/Pop/128x128@2x/apps/password.png
